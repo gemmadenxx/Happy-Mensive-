@@ -3,96 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy 2nd Mensiversary! ❤️</title>
+    <title>Happy Mensiversary! ❤️</title>
     <style>
         body {
-            text-align: center;
             font-family: Arial, sans-serif;
-            background-color: #f6e1f2;
+            text-align: center;
+            background-color: #ffebf3;
+            color: #d63384;
+            margin: 0;
+            padding: 20px;
             overflow: hidden;
         }
         h1 {
-            color: #ff4b5c;
+            font-size: 2.5em;
+            margin-bottom: 10px;
         }
-        .btn {
-            padding: 10px 20px;
-            font-size: 18px;
+        p {
+            font-size: 1.5em;
+        }
+        .button {
+            background-color: #ff4d6d;
             color: white;
-            background-color: #ff4b5c;
             border: none;
-            border-radius: 5px;
+            padding: 15px 30px;
+            font-size: 1.2em;
             cursor: pointer;
-        }
-        .falling {
-            position: absolute;
-            font-size: 30px;
-            animation: fall 5s linear infinite;
-        }
-        @keyframes fall {
-            0% { transform: translateY(-100px); opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
-        }
-        #poem, #lyrics {
-            display: none;
-            font-size: 20px;
+            border-radius: 10px;
             margin-top: 20px;
-            color: #ff4b5c;
+        }
+        .button:hover {
+            background-color: #c9184a;
+        }
+        #loveMessage {
+            font-style: italic;
+            font-size: 1.3em;
+            margin-top: 20px;
+            display: none;
+        }
+        .heart, .flower {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0;
+            animation: floatUp 4s ease-in-out forwards;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-
-    <h1>HAPPY 2nd MENSIVERSARY, Abin! ❤️</h1>
-    <p>I am grateful to be with you for these two wonderful months.</p>
-
-    <button class="btn" onclick="showLove()">Click Me</button>
-
-    <div id="poem">
-        <p>💖 Two months, 60 days, 1,440 hours, and millions of heartbeats that beat only for you, Abin.</p>
-        <p>I'm grateful that the universe brought me to you— the love I want to cherish forever. 💖</p>
-    </div>
-<button onclick="document.getElementById('music').play()">Play Music</button>
-    <div id="lyrics">
-        <p>🎶 'Cause all of me loves all of you 🎶</p>
-        <p>🎶 Love your curves and all your edges 🎶</p>
-        <p>🎶 All your perfect imperfections 🎶</p>
-        <p>🎶 Give your all to me, I'll give my all to you 🎶</p>
-        <p>🎶 You're my end and my beginning 🎶</p>
-    </div>
-<audio id="music" src="https://drive.google.com/uc?export=download&id=1qa4P7TaDZnWyqlT__-KS9GJ0ADiET_AU"></audio>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let song = document.getElementById("music");
-        song.muted = false;
-        song.play().catch(error => {
-            console.log("Autoplay diblokir, pengguna harus klik tombol.");
-        });
-    });
-</script>
+    <h1>Happy 2nd Mensiversary! 💖</h1>
+    <p>Hai sayang,</p>
+    <p>Makasih udah selalu ada buat aku. Dua bulan ini penuh kenangan indah.</p>
+    <p>Semoga kita selalu bahagia dan langgeng terus ya! Aku sayang kamu ❤️</p>
     
-        function showLove() {
-            let song = document.getElementById("music");
-            song.play(); // Memastikan lagu tetap jalan jika autoplay diblokir
+    <button class="button" onclick="showSurprise()">Klik untuk Kejutan!</button>
 
-            for (let i = 0; i < 50; i++) {
-                let item = document.createElement("div");
-                item.innerHTML = Math.random() > 0.5 ? "❤️" : "🌹";
-                item.classList.add("falling");
-                item.style.left = Math.random() * 100 + "vw";
-                item.style.animationDuration = Math.random() * 2 + 3 + "s";
-                item.style.position = "absolute";
-                item.style.top = "-50px";
-                document.body.appendChild(item);
-                setTimeout(() => { item.remove(); }, 5000);
+    <p id="loveMessage">"Time moves forward, but my love for you stays in the same place—close to your heart, held tightly in our embrace. If love is a journey, then I wish to be lost forever in your arms. These two months are just the beginning of our forever." ❤️</p>
+
+    <div id="heartsContainer"></div>
+
+    <script>
+        function showSurprise() {
+            alert("I LOVE YOU! ❤️💖💘");
+
+            document.getElementById("loveMessage").style.display = "block";
+
+            let totalHearts = 50;
+            let totalFlowers = 50;
+            let delay = 0;
+
+            for (let i = 0; i < totalHearts; i++) {
+                setTimeout(() => {
+                    createHeart();
+                }, delay);
+                delay += 100; // Tiap heart muncul tiap 0.1 detik agar smooth
             }
 
+            for (let i = 0; i < totalFlowers; i++) {
+                setTimeout(() => {
+                    createFlower();
+                }, delay);
+                delay += 100; // Tiap bunga muncul setelah 0.1 detik agar smooth
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💖";
+            document.getElementById("heartsContainer").appendChild(heart);
+
+            // Posisi random
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = "100vh";
+
+            // Hapus setelah animasi selesai
             setTimeout(() => {
-                document.getElementById("poem").style.display = "block";
-                document.getElementById("lyrics").style.display = "block";
-            }, 5000);
+                heart.remove();
+            }, 4000);
+        }
+
+        function createFlower() {
+            const flower = document.createElement("div");
+            flower.classList.add("flower");
+            flower.innerHTML = "🌹";
+            document.getElementById("heartsContainer").appendChild(flower);
+
+            // Posisi random
+            flower.style.left = Math.random() * 100 + "vw";
+            flower.style.top = "100vh";
+
+            // Hapus setelah animasi selesai
+            setTimeout(() => {
+                flower.remove();
+            }, 4000);
         }
     </script>
-
 </body>
 </html>
