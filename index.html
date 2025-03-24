@@ -51,7 +51,7 @@
         <p>💖 Two months, 60 days, 1,440 hours, and millions of heartbeats that beat only for you, Abin.</p>
         <p>I'm grateful that the universe brought me to you— the love I want to cherish forever. 💖</p>
     </div>
-
+<button onclick="document.getElementById('music').play()">Play Music</button>
     <div id="lyrics">
         <p>🎶 'Cause all of me loves all of you 🎶</p>
         <p>🎶 Love your curves and all your edges 🎶</p>
@@ -59,18 +59,18 @@
         <p>🎶 Give your all to me, I'll give my all to you 🎶</p>
         <p>🎶 You're my end and my beginning 🎶</p>
     </div>
+<audio id="music" src="https://drive.google.com/uc?export=download&id=1qa4P7TaDZnWyqlT__-KS9GJ0ADiET_AU"></audio>
 
-<audio id="music" src="https://drive.google.com/uc?export=download&id=1qa4P7TaDZnWyqlT__-KS9GJ0ADiET_AU" autoplay muted></audio>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let song = document.getElementById("music");
-            song.muted = false; // Unmute lagu
-            song.currentTime = 63; // Mulai dari menit 1:03 (reff)
-            song.play().catch(error => {
-                console.log("Autoplay diblokir, pengguna harus klik halaman dulu.");
-            });
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let song = document.getElementById("music");
+        song.muted = false;
+        song.play().catch(error => {
+            console.log("Autoplay diblokir, pengguna harus klik tombol.");
         });
-
+    });
+</script>
+    
         function showLove() {
             let song = document.getElementById("music");
             song.play(); // Memastikan lagu tetap jalan jika autoplay diblokir
