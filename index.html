@@ -60,13 +60,21 @@
         <p>🎶 You're my end and my beginning 🎶</p>
     </div>
 
-    <audio id="music" src="allofme.mp3"></audio>
+    <audio id="music" src="allofme.mp3" autoplay muted></audio>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let song = document.getElementById("music");
+            song.muted = false; // Unmute lagu
+            song.currentTime = 63; // Mulai dari menit 1:03 (reff)
+            song.play().catch(error => {
+                console.log("Autoplay diblokir, pengguna harus klik halaman dulu.");
+            });
+        });
+
         function showLove() {
             let song = document.getElementById("music");
-            song.currentTime = 63; // Mulai dari menit 1:03 (reff)
-            song.play();
+            song.play(); // Memastikan lagu tetap jalan jika autoplay diblokir
 
             for (let i = 0; i < 50; i++) {
                 let item = document.createElement("div");
@@ -80,7 +88,6 @@
                 setTimeout(() => { item.remove(); }, 5000);
             }
 
-            // Jeda waktu 5 detik sebelum menampilkan lirik & puisi
             setTimeout(() => {
                 document.getElementById("poem").style.display = "block";
                 document.getElementById("lyrics").style.display = "block";
